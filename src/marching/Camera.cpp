@@ -46,8 +46,13 @@ Camera::ray_march(const ofVec3f& position,
 
 		if (distance_to_closest < MINIMUM_HIT_DISTANCE)
 		{
-			float c = (float)i / MAX_NUMBER_STEPS * 255;
-			return { c, c, c };
+			const auto normal = compute_normal(current_position, geometry);
+			// TODO move lighting out of here (support multiple sources + shades?)
+			const auto light_pos = ofVec3f(2, 1, 2);
+			const auto direction_light = (light_pos - current_position).normalize();
+			const auto diffuse_intensity = std::max(0.f, normal.dot(direction_light));
+			const auto c = (normal * 0.5 + 0.5) * 255 * diffuse_intensity;
+			return ofColor(c.x, c.y, c.z);
 		} else if (distance_traveled > MAXIMUM_TRACE_DISTANCE)
 		{
 			break;
@@ -58,4 +63,15 @@ Camera::ray_march(const ofVec3f& position,
 	}
 
 	return background_color;
+}
+ofVec3f Camera::compute_normal(const ofVec3f& position, const std::shared_ptr<const Geometry>& geometry)
+{
+	const float epsilon = 0.001;
+
+	const float center_dist = geometry->distance_from(position);
+	const float dx = geometry->distance_from(position + ofVec3f(epsilon, 0, 0));// - geometry->distance_from(position - vx);
+	const float dy = geometry->distance_from(position + ofVec3f(0, epsilon, 0));// - geometry->distance_from(position - vy);
+	const float dz = geometry->distance_from(position + ofVec3f(0, 0, epsilon));// - geometry->distance_from(position - vz);
+
+	return (ofVec3f(dx, dy, dz) - center_dist).normalize();
 }

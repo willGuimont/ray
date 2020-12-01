@@ -18,12 +18,13 @@ public:
 	ofImage render(const std::shared_ptr<const Geometry>& geometry) const;
 
 private:
-	constexpr static const int MAX_NUMBER_STEPS = 32;
+	constexpr static const int MAX_NUMBER_STEPS = 128;
 	constexpr static const float MINIMUM_HIT_DISTANCE = 0.001;
 	constexpr static const float MAXIMUM_TRACE_DISTANCE = 1000;
 
 	ofColor
 	ray_march(const ofVec3f& position, const ofVec3f& direction, const std::shared_ptr<const Geometry>& geometry) const;
+	static ofVec3f compute_normal(const ofVec3f& position, const std::shared_ptr<const Geometry>& geometry) ;
 
 	const int view_width;
 	const int view_height;
