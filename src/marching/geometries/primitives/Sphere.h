@@ -7,12 +7,11 @@
 class Sphere : public Geometry
 {
 public:
-	Sphere(ofVec3f position, float radius);
+	explicit Sphere(float radius);
 
 	float distance_from(const ofVec3f& point) const override;
 
 private:
-	ofVec3f position;
 	float radius;
 };
 

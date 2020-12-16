@@ -1,11 +1,10 @@
-#include <marching/geometries/primitives/Sphere.h>
 #include "ofApp.h"
 
 ofApp::ofApp()
 	: camera(WINDOW_WIDTH, WINDOW_HEIGHT, ofColor::black)
 {
-	std::shared_ptr<Geometry> sphere1 = std::make_shared<Sphere>(ofVec3f(0.75, 3, 0), 1);
-	std::shared_ptr<Geometry> sphere2 = std::make_shared<Sphere>(ofVec3f(-0.75, 3, 0), 1);
+	std::shared_ptr<Geometry> sphere1 = std::make_shared<Translation>(ofVec3f(-1, 4, 0), std::make_shared<Sphere>(2));
+	std::shared_ptr<Geometry> sphere2 = std::make_shared<Translation>(ofVec3f(1, 3, 0), std::make_shared<Sphere>(1));
 	std::vector<std::shared_ptr<Geometry>> geometries = {sphere1, sphere2};
 	geometry = std::make_shared<Smooth>(0.75, sphere1, sphere2);
 }

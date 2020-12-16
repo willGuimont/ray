@@ -4,6 +4,7 @@
 
 #include "marching/Camera.h"
 #include "marching/geometries/Geometry.h"
+#include "Translation.h"
 #include "marching/geometries/combinators/Smooth.h"
 #include "marching/geometries/combinators/Union.h"
 #include "marching/geometries/primitives/Sphere.h"

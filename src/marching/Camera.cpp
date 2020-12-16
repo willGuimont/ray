@@ -48,7 +48,7 @@ Camera::ray_march(const ofVec3f& position,
 		{
 			const auto normal = compute_normal(current_position, geometry);
 			// TODO move lighting out of here (support multiple sources + shades?)
-			const auto light_pos = ofVec3f(2, 1, 2);
+			const auto light_pos = ofVec3f(2, 1, 1);
 			const auto direction_light = (light_pos - current_position).normalize();
 			const auto diffuse_intensity = std::max(0.f, normal.dot(direction_light));
 			const auto c = (normal * 0.5 + 0.5) * 255 * diffuse_intensity;
@@ -69,9 +69,9 @@ ofVec3f Camera::compute_normal(const ofVec3f& position, const std::shared_ptr<co
 	const float epsilon = 0.001;
 
 	const float center_dist = geometry->distance_from(position);
-	const float dx = geometry->distance_from(position + ofVec3f(epsilon, 0, 0));// - geometry->distance_from(position - vx);
-	const float dy = geometry->distance_from(position + ofVec3f(0, epsilon, 0));// - geometry->distance_from(position - vy);
-	const float dz = geometry->distance_from(position + ofVec3f(0, 0, epsilon));// - geometry->distance_from(position - vz);
+	const float dx = geometry->distance_from(position + ofVec3f(epsilon, 0, 0));
+	const float dy = geometry->distance_from(position + ofVec3f(0, epsilon, 0));
+	const float dz = geometry->distance_from(position + ofVec3f(0, 0, epsilon));
 
 	return (ofVec3f(dx, dy, dz) - center_dist).normalize();
 }
