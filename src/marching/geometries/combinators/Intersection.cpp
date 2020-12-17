@@ -1,11 +1,9 @@
 #include "Intersection.h"
 
-#include <utility>
 Intersection::Intersection(std::vector<std::shared_ptr<Geometry>> geometries)
 	: geometries(std::move(geometries))
-{
+{}
 
-}
 float Intersection::distance_from(const ofVec3f& point) const
 {
 	std::vector<float> distances;

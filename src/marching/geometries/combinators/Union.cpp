@@ -1,10 +1,8 @@
 #include "Union.h"
 
-#include <utility>
 Union::Union(std::vector<std::shared_ptr<Geometry>> geometries)
 	: geometries(std::move(geometries))
-{
-}
+{}
 
 float Union::distance_from(const ofVec3f& point) const
 {

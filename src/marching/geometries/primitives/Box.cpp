@@ -1,8 +1,8 @@
 #include "Box.h"
+
 Box::Box(const ofVec3f& size)
 	: size(size)
-{
-}
+{}
 
 float Box::distance_from(const ofVec3f& point) const
 {

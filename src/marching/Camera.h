@@ -18,8 +18,8 @@ public:
 	ofImage render(const std::shared_ptr<const Geometry>& geometry) const;
 
 private:
-	constexpr static const int MAX_NUMBER_STEPS = 128;
-	constexpr static const float MINIMUM_HIT_DISTANCE = 0.001;
+	constexpr static const int MAX_NUMBER_STEPS = 64;
+	constexpr static const float MINIMUM_HIT_DISTANCE = 0.00001;
 	constexpr static const float MAXIMUM_TRACE_DISTANCE = 1000;
 
 	ofColor

@@ -4,7 +4,8 @@
 
 #include "marching/Camera.h"
 #include "marching/geometries/Geometry.h"
-#include "Translation.h"
+#include "marching/geometries/transformations/Translation.h"
+#include "marching/geometries/transformations/Rotation.h"
 #include "marching/geometries/combinators/Smooth.h"
 #include "marching/geometries/combinators/Union.h"
 #include "marching/geometries/combinators/Difference.h"
@@ -15,8 +16,8 @@
 class ofApp : public ofBaseApp
 {
 public:
-	constexpr static const int WINDOW_WIDTH = 500;
-	constexpr static const int WINDOW_HEIGHT = 500;
+	constexpr static const int WINDOW_WIDTH = 1000;
+	constexpr static const int WINDOW_HEIGHT = 1000;
 
 	ofApp();
 
