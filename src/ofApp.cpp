@@ -4,22 +4,26 @@ ofApp::ofApp()
 	: camera(WINDOW_WIDTH, WINDOW_HEIGHT, ofColor::black)
 {
 	std::shared_ptr<Geometry> sphere1 = std::make_shared<Translation>(
-		ofVec3f(-1, 4, -1),
+		ofVec3f(-1.25, 4, -1.25),
 		std::make_shared<Sphere>(1));
 	std::shared_ptr<Geometry> sphere2 = std::make_shared<Translation>(
-		ofVec3f(1, 4, -1),
+		ofVec3f(1.25, 4, -1.25),
 		std::make_shared<Sphere>(1));
 	std::shared_ptr<Geometry> sphere3 = std::make_shared<Translation>(
-		ofVec3f(1, 4, 1),
+		ofVec3f(1.25, 4, 1.25),
 		std::make_shared<Sphere>(1));
 	std::shared_ptr<Geometry> sphere4 = std::make_shared<Translation>(
-		ofVec3f(-1, 4, 1),
+		ofVec3f(-1.25, 4, 1.25),
+		std::make_shared<Sphere>(1));
+	std::shared_ptr<Geometry> box = std::make_shared<Translation>(
+		ofVec3f(0, 4, 0),
 		std::make_shared<Sphere>(1));
 
 	const auto k = 1.f;
 	geometry = std::make_shared<Smooth>(k, sphere1, sphere2);
 	geometry = std::make_shared<Smooth>(k, geometry, sphere3);
 	geometry = std::make_shared<Smooth>(k, geometry, sphere4);
+	geometry = std::make_shared<Smooth>(k, geometry, box);
 }
 
 void ofApp::setup()
