@@ -44,7 +44,7 @@ Camera::ray_march(const ofVec3f& position,
 		auto current_position = position + distance_traveled * direction;
 		auto distance_to_closest = geometry->distance_from(current_position);
 
-		if (distance_to_closest < MINIMUM_HIT_DISTANCE)
+		if (distance_to_closest < EPSILON)
 		{
 			const auto normal = compute_normal(current_position, geometry);
 			// TODO move lighting out of here (support multiple sources + shades?)
@@ -66,16 +66,12 @@ Camera::ray_march(const ofVec3f& position,
 }
 ofVec3f Camera::compute_normal(const ofVec3f& position, const std::shared_ptr<const Geometry>& geometry)
 {
-	const float epsilon = 0.001;
-
-//	const float center_dist = geometry->distance_from(position);
-	const float dx = geometry->distance_from(position + ofVec3f(epsilon, 0, 0));
-	const float dx2 = geometry->distance_from(position - ofVec3f(epsilon, 0, 0));
-	const float dy = geometry->distance_from(position + ofVec3f(0, epsilon, 0));
-	const float dy2 = geometry->distance_from(position - ofVec3f(0, epsilon, 0));
-	const float dz = geometry->distance_from(position + ofVec3f(0, 0, epsilon));
-	const float dz2 = geometry->distance_from(position - ofVec3f(0, 0, epsilon));
+	const float dx = geometry->distance_from(position + ofVec3f(EPSILON, 0, 0));
+	const float dx2 = geometry->distance_from(position - ofVec3f(EPSILON, 0, 0));
+	const float dy = geometry->distance_from(position + ofVec3f(0, EPSILON, 0));
+	const float dy2 = geometry->distance_from(position - ofVec3f(0, EPSILON, 0));
+	const float dz = geometry->distance_from(position + ofVec3f(0, 0, EPSILON));
+	const float dz2 = geometry->distance_from(position - ofVec3f(0, 0, EPSILON));
 
 	return (ofVec3f(dx - dx2, dy - dy2, dz - dz2)).normalize();
-//	return (ofVec3f(dx, dy, dz) - center_dist).normalize();
 }

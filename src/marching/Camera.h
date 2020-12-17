@@ -19,7 +19,7 @@ public:
 
 private:
 	constexpr static const int MAX_NUMBER_STEPS = 64;
-	constexpr static const float MINIMUM_HIT_DISTANCE = 0.00001;
+	constexpr static const float EPSILON = 0.00001;
 	constexpr static const float MAXIMUM_TRACE_DISTANCE = 1000;
 
 	ofColor
