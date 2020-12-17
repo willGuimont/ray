@@ -3,10 +3,10 @@
 ofApp::ofApp()
 	: camera(WINDOW_WIDTH, WINDOW_HEIGHT, ofColor::black)
 {
-	std::shared_ptr<Geometry> sphere1 = std::make_shared<Translation>(ofVec3f(-1, 4, 0), std::make_shared<Sphere>(2));
-	std::shared_ptr<Geometry> sphere2 = std::make_shared<Translation>(ofVec3f(1, 3, 0), std::make_shared<Sphere>(1));
-	std::vector<std::shared_ptr<Geometry>> geometries = {sphere1, sphere2};
-	geometry = std::make_shared<Smooth>(0.75, sphere1, sphere2);
+	std::shared_ptr<Geometry> sphere = std::make_shared<Translation>(ofVec3f(-0.5, 4, 0), std::make_shared<Sphere>(1.5));
+	std::shared_ptr<Geometry> box = std::make_shared<Translation>(ofVec3f(0.5, 4, 0), std::make_shared<Box>(ofVec3f(1, 1, 1)));
+//	std::vector<std::shared_ptr<Geometry>> geometries = {sphere, box};
+	geometry = std::make_shared<Smooth>(0.75, sphere, box);
 }
 
 void ofApp::setup()

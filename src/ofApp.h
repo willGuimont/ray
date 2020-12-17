@@ -7,7 +7,10 @@
 #include "Translation.h"
 #include "marching/geometries/combinators/Smooth.h"
 #include "marching/geometries/combinators/Union.h"
+#include "marching/geometries/combinators/Difference.h"
+#include "marching/geometries/combinators/Intersection.h"
 #include "marching/geometries/primitives/Sphere.h"
+#include "marching/geometries/primitives/Box.h"
 
 class ofApp : public ofBaseApp
 {
