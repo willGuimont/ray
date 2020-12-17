@@ -48,7 +48,7 @@ Camera::ray_march(const ofVec3f& position,
 		{
 			const auto normal = compute_normal(current_position, geometry);
 			// TODO move lighting out of here (support multiple sources + shades?)
-			const auto light_pos = ofVec3f(2, 1, 1);
+			const auto light_pos = ofVec3f(1, 1, 1);
 			const auto direction_light = (light_pos - current_position).normalize();
 			const auto diffuse_intensity = std::max(0.f, normal.dot(direction_light));
 			const auto c = (normal * 0.5 + 0.5) * 255 * diffuse_intensity;
