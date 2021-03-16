@@ -43,6 +43,11 @@ void ofApp::draw()
 
 void ofApp::keyPressed(int key)
 {
+	if (key == ' ') {
+		ofImage img;
+		img.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+		img.save("screenshot.png");
+	}
 }
 
 void ofApp::keyReleased(int key)

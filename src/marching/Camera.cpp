@@ -53,10 +53,12 @@ Camera::ray_march(const ofVec3f& position,
 			const auto diffuse_intensity = std::max(0.f, normal.dot(direction_light));
 			const auto c = (normal * 0.5 + 0.5) * 255 * diffuse_intensity;
 			return ofColor(c.x, c.y, c.z);
-		} else if (distance_traveled > MAXIMUM_TRACE_DISTANCE)
+		}
+		else if (distance_traveled > MAXIMUM_TRACE_DISTANCE)
 		{
 			break;
-		} else
+		}
+		else
 		{
 			distance_traveled += distance_to_closest;
 		}
